@@ -1,25 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import HomePage from "./pages/HomePage";
+import {Box, createTheme, ThemeProvider} from "@mui/material";
+import { Toolbar } from "./components/toolbar";
+import {observer} from "mobx-react-lite";
+
+const theme = createTheme({})
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ThemeProvider theme={theme} >
+          <Box sx={{flexGrow: 1, minHeight: 1}}>
+            <Toolbar />
+            <Box sx={{flexGrow: 1, minHeight: 1}}>
+                <HomePage />
+            </Box>
+          </Box>
+      </ThemeProvider>
     </div>
   );
 }
 
-export default App;
+export default observer(App);
